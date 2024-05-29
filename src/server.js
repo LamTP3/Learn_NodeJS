@@ -1,7 +1,7 @@
 const express = require('express') // common js
-// import express from 'express' // es modules
+const configViewEngine = require('./config/viewEngine')
+const initWebRouter = require('./routes/web')
 
-const path = require('path')
 require('dotenv').config()
 
 
@@ -10,20 +10,12 @@ const port = process.env.PORT || 6969
 const hostname = process.env.HOST_NAME || 'localhost'
 
 // config view engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs')
+configViewEngine(app)
 
-// config static file
-app.use(express.static(path.join(__dirname, 'public')))
-
+//test
 
 // declare routes
-app.get('/', (req, res) => {
-    res.send('<h1>Hello World !</h1>')
-})
-app.get('/sample', (req, res) => {
-    res.render('sample.ejs')
-})
+app.use(`/v1`, initWebRouter)
 
 
 app.listen(port, hostname, () => {
