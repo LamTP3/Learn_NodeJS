@@ -6,37 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href="/v1">Home</a>
+        <a href="/v1/create">Create Users</a>
+
     </div>
-    <div class="form-add-new">
-        <form action="create-user" method="post">
-            <fieldset>
-                <legend>Add New User</legend>
-                <div class="input-group">
-                    <label>Email</label>
-                    <input type="text" id="email" name="email">
-                </div>
-                <div class="input-group">
-                    <label>Name</label>
-                    <input type="text" id="name" name="name">
-                </div>
-                <div class="input-group">
-                    <label>City</label>
-                    <input type="text" id="city" name="city">
-                </div>
-                <div>
-                    <button class="button"> Save</button>
-                </div>
-            </fieldset>
-        </form>
+    <div class="w3-container">
+        <h2>List User</h2>
+
+        <table class="w3-table-all w3-hoverable">
+            <thead>
+                <tr class="w3-light-grey">
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+                <td> London </td>
+                <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+
+        </table>
     </div>
+
 </body>
 
 </html>

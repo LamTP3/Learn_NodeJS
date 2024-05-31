@@ -7,20 +7,33 @@ const getHomePage = (req, res) => {
 const getSamplePage = (req, res) => {
   return res.render("sample.ejs");
 };
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
   let { email, name, city } = req.body;
-  connection.query(
-    `INSERT  INTO Users (email,name,city) 
+  // connection.query(
+  //   `INSERT  INTO Users (email,name,city)
+  //   Values (?,?,?)`,
+  //   [email, name, city],
+  //   function (err, results) {
+  //     console.log(results);
+  //     return res.send("Created user successfully");
+  //   }
+  // );
+  const [results, fields] = await connection.query(
+    `INSERT  INTO Users (email,name,city)
     Values (?,?,?)`,
-    [email, name, city],
-    function (err, results) {
-      console.log(results);
-      return res.send("Created user successfully");
-    }
+    [email, name, city]
   );
+  console.log(results);
+  return res.send("Created user successfully");
 };
+
+const getCreatePage = (req, res) => {
+  return res.render("create.ejs");
+};
+
 module.exports = {
   getHomePage,
   getSamplePage,
   postCreateUser,
+  getCreatePage,
 };
