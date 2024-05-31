@@ -16,6 +16,7 @@
 
     </div>
     <div class="w3-container">
+        <!-- <%= JSON.stringify(users) %> -->
         <h2>List User</h2>
 
         <table class="w3-table-all w3-hoverable">
@@ -28,16 +29,46 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
-                <td> London </td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
+            <!-- <% for (let i=0; i < users.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= users[i].id %>
+                    </td>
+                    <td>
+                        <%= users[i].email %>
+                    </td>
+                    <td>
+                        <%= users[i].name %>
+                    </td>
+                    <td>
+                        <%= users[i].city %>
+                    </td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <% } %> -->
+            <% users.forEach((user, index)=> { %>
+                <tr>
+                    <td>
+                        <%= user.id %> - <%= index %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.city %>
+                    </td>
+                    <td>
+                        <a href="/v1/update/<%= user.id %>">Edit</a>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <% }) %>
 
         </table>
     </div>
