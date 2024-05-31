@@ -22,8 +22,16 @@ const editUser = async (req, res) => {
   return results;
 };
 
+const deleteUser = async (id) => {
+  let [results, fields] = await connection.query(
+    "DELETE FROM Users WHERE id = ?",
+    [id]
+  );
+  return results;
+};
 module.exports = {
   getAllUsers,
   getUserById,
   editUser,
+  deleteUser,
 };
