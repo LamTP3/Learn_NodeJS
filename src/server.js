@@ -7,7 +7,8 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 6969;
 const hostname = process.env.HOST_NAME || "localhost";
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // config view engine
 configViewEngine(app);
 

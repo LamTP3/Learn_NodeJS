@@ -1,21 +1,26 @@
 const connection = require("../config/database");
 
 const getHomePage = (req, res) => {
-  // simple query
-  let user = [];
-  connection.query("SELECT * FROM Users u ", function (err, results, fields) {
-    user = results;
-    console.log(">>>>Result: ", results); // results contains rows returned by server
-    console.log(">>>>Fields: ", fields); // fields contains extra meta data about results, if available
-    console.log("Check user: ", user);
-    return res.send(JSON.stringify(user));
-  });
+  return res.render("home.ejs");
 };
 
 const getSamplePage = (req, res) => {
   return res.render("sample.ejs");
 };
+const postCreateUser = (req, res) => {
+  let { email, name, city } = req.body;
+  connection.query(
+    `INSERT  INTO Users (email,name,city) 
+    Values (?,?,?)`,
+    [email, name, city],
+    function (err, results) {
+      console.log(results);
+      return res.send("Created user successfully");
+    }
+  );
+};
 module.exports = {
   getHomePage,
   getSamplePage,
+  postCreateUser,
 };

@@ -1,8 +1,12 @@
-const router = require('express').Router()
-const { getHomePage, getSamplePage } = require('../controllers/homeController')
-router.get('/', getHomePage)
+const router = require("express").Router();
+const {
+  getHomePage,
+  getSamplePage,
+  postCreateUser,
+} = require("../controllers/homeController");
 
-router.get('/sample', getSamplePage)
+router.get("/", getHomePage);
+router.get("/sample", getSamplePage);
+router.post("/create-user", postCreateUser);
 
-
-module.exports = router
+module.exports = router;
