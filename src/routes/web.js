@@ -67,11 +67,7 @@ const initWebRoute = (app) => {
     },
     homeController.handleUploadMultipleFile
   );
-  //   router.post(
-  //     "/upload-multiple-images",
-  //     upload.array("multiple_images", 3),
-  //     homeController.handleUploadMultipleFile
-  //   );
+
   app.use("/", router);
 };
 
